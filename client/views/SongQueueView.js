@@ -2,12 +2,13 @@
 var SongQueueView = Backbone.View.extend({
 
   initialize: function() {
-    this.collection.on('enqueue', this.render, this);
+    console.log(this.collection)
+    this.collection.on('add', this.render, this);
     this.render();
   },
 
   render: function() {
-
+    console.log('SQV render fired')
     this.$el.children().detach();
 
     this.$el.html('<th>Queue</th>').append(

@@ -11,11 +11,28 @@ var AppModel = Backbone.Model.extend({
     the 'this' we use that's actually in the function (this.set('currentSong', song)) would
     end up referring to the window. That's just what happens with all JS events. The handlers end up
     getting called from the window (unless we override it, as we do here). */
+    params.library.on('dequeue', function (song) {
+      var queue = this.get('songQueue');
+      queue.shift();
 
+      this.set('currentSong', queue.models[0]);
+      console.log(queue.models[0]); 
+      console.log('in da queue')
+    }, this);
 
-    params.library.on('play', function(song) {
-      this.set('currentSong', song);
+    
+    params.library.on('enqueue', function (song) {
+      var queue = this.get('songQueue');
+      queue.add(song);
+    }, this);
+
+    params.library.on('play', function (song) {
+      var currSong = this.get('currentSong');
+      if ( !(currSong.attributes.artist) ) {
+        this.set('currentSong', song);
+      }
     }, this);
   }
+   
 
 });
