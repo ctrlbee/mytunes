@@ -1,0 +1,16 @@
+
+- SongQueue -> collection of Song Models
+- SongQueueView -> Bound to SongQueue
+  * SQV is a listener for adding, removing and dequeueing the queue.
+- SongQueueEntryView -> Snippets that populate the SQV
+  * SQEV is a listener for the end of the current song
+
+So, making multiple queues is a matter of correctly building new copies of the above things.
+
+1) Visual representation of selection process
+2) Create new playlist by name
+   * builds new copies of SQ, SQV, and SQEV
+3) Selection event associates 'current queue'
+4) Given 'current queue', click events for typical adding add to the specific 'current queue'
+   * Memory for which queue has which songs after switching back and forth with proper rendering
+  

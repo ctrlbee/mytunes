@@ -3,8 +3,13 @@ var SongQueue = Songs.extend({
 
   // model: songModel
 
-  initialize: function() {
-   
-  }
+  // initialize: function() {
+  //   this.model.on('removeFromQueue', this.removeSong, this);
+  // },
+
+  // removeSong: function(song) {
+  //   console.log("remove Song :", song)
+  //   this.collection.remove(this.collection.get(song));
+  // }
 
 });
